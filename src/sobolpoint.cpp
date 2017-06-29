@@ -1,11 +1,3 @@
-/*
- * This file is based on sobol.cc written by Frances Y. Kuo.
- * http://web.maths.unsw.edu.au/~fkuo/sobol/
- * http://web.maths.unsw.edu.au/~fkuo/sobol/sobol.cc
- *
- * And modified much by Mutsuo Saito <saito@manieth.com> for QMC Integration.
- */
-
 // Frances Y. Kuo
 //
 // Email: <f.kuo@unsw.edu.au>
@@ -26,9 +18,6 @@
 // Licence pertaining to sobol.cc and the accompanying sets of direction numbers
 // -----------------------------------------------------------------------------
 // Copyright (c) 2008, Frances Y. Kuo and Stephen Joe
-// All rights reserved.
-//
-// Copyright (c) 2017, Mutsuo Saito.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -57,6 +46,15 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -----------------------------------------------------------------------------
+
+/*
+ * This file is based on sobol.cc written by Frances Y. Kuo.
+ * http://web.maths.unsw.edu.au/~fkuo/sobol/
+ * http://web.maths.unsw.edu.au/~fkuo/sobol/sobol.cc
+ *
+ * And modified much by Mutsuo Saito <saito@manieth.com> for R package.
+ */
+
 #include <inttypes.h>
 #include <iostream>
 #include <iomanip>

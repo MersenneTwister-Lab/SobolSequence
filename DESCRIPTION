@@ -2,7 +2,7 @@ Package: SobolSequence
 Type: Package
 Title: Sobol sequences with better two-dimensional projections
 Version: 1.0
-Date: 2017-06-27
+Date: 2017-06-29
 Authors@R: c(person("Frances", "Kuo", role = "aut"),
              person("Stephen", "Joe", role = "aut"),
              person("Makoto", "Matsumoto", role = "ctb",
@@ -22,7 +22,7 @@ Description: R implementation of S. Joe and F. Y. Kuo,
         SIAM J. Sci. Comput. 30, 2635-2654 (2008).
         The implementation is based on the data file new-joe-kuo-6.21201
         <http://web.maths.unsw.edu.au/~fkuo/sobol/>.
-License: GPL (>= 3)
+License: BSD_3_clause + file LICENSE
 Imports: Rcpp (>= 0.12.9)
 LinkingTo: Rcpp
 Suggests: knitr, rmarkdown, testthat
