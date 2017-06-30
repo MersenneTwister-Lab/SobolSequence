@@ -1,0 +1,9 @@
+http://MersenneTwister-Lab.github.io/rmcqmcint
+
+git clone xxxx directory-name
+
+git branch gh-pages
+git checkout gh-pages
+delete all and create index.html
+git commit -a -m "make gh-pages etc."
+git push origin gh-pages
