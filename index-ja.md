@@ -1,36 +1,37 @@
-R package: Sobol sequences with better two-dimensional projections
-==================================================================
+R package: 2次元射影のよいSobol sequences
+=====================================
 
-Mutsuo Saito ported
+Stephen Joe と Frances Y. Kuo による
 "Constructing Sobol sequences with better two-dimensional projections"
-by Stephen Joe and Frances Y. Kuo to R.
+を斎藤睦夫がRに移植したもの。
 
-##Caution
-Currently, this project is very experimental.
+##注意
+いまのところ、このプロジェクトはまったく実験的なものです。
 
-##Link
-- [Japanese Version](index-ja.html)
-- [vignettes](sobolsequence.html)
+##リンク
+
+- [英語版](index.html)
+- [ビニエット](sobolsequence.html)
 - [GitHub Page](https://github.com/MersenneTwister-Lab/SobolSequence/)
-- [This Page](https://mersennetwister-lab.github.io/SobolSequence/)
+- [このページ](https://mersennetwister-lab.github.io/SobolSequence/)
 
-##Install
-You can install the packeage in R like this:
+##インストール
+以下のようにしてこのパッケージをRにインストールすることができる。
 
 ```
 install.packages('devtools')
 library('devtools')
-install_github("MersenneTwister-Lab/SobolSequence")
+install_github('MersenneTwister-Lab/SobolSequence')
 ```
 
-##Recovery
-If fail, try old good style, download and install.
+##やり直し
+上記の方法でうまくいかないときは、ダウンロードしてインストールする方法を試してください。
 
 - Source Package: [SobolSequence_1.0.tar.gz](SobolSequence_1.0.tar.gz)
 - OS X Binary Package: [SobolSequence_1.0.tgz](SobolSequence_1.0.tgz)
 - Windows Binary Package: [SobolSequence_1.0.zip](SobolSequence_1.0.zip)
 
-##Reference
+##参照
 - S. Joe and F. Y. Kuo,
 "Constructing Sobol sequences with better two-dimensional projections",
 SIAM J. Sci. Comput. 30, 2635-2654 (2008).
