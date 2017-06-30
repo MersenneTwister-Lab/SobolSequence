@@ -11,7 +11,7 @@ Stephen Joe と Frances Y. Kuo による
 ##リンク
 
 - [英語版](index.html)
-- [ビニエット](sobolsequence.html)
+- [ビニエット](sobolsequence-ja.html)
 - [GitHub Page](https://github.com/MersenneTwister-Lab/SobolSequence/)
 - [このページ](https://mersennetwister-lab.github.io/SobolSequence/)
 

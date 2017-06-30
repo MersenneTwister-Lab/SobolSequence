@@ -9,26 +9,30 @@ vignette: >
 Sobol Sequence
 --------------
 
-R implementation of
+R 移植版
 S. Joe and F. Y. Kuo,
 "Constructing Sobol sequences with better two-dimensional projections",
 SIAM J. Sci. Comput. 30, 2635-2654 (2008).
-The implementation is based on the data file new-joe-kuo-6.21201
+この実装は次のデータファイルに基づいている new-joe-kuo-6.21201
 <http://web.maths.unsw.edu.au/~fkuo/sobol/>.
-        
 
-Get avairable dimension number of Sobol Sequence.
+
+Sobol Sequence の使用可能な次元を取得する。
+
 ```{r}
 library(SobolSequence)
 sobolSequence.dimMinMax()
 ```
 
-Get avairable F2 dimension number of Sobol Sequence.
+Sobol Sequence の使用可能なF2次元を取得する。
+
 ```{r}
 sobolSequence.dimF2MinMax(10)
 ```
 
-And get points. Each row of returned matrix contains an s-dimensional point.
+そして点集合を取得する。次元をsとすると、各点は$(0,1)^s$に属する。
+返却された行列の各行はs-次元の点の一つを示している。
+
 ```{r}
 s <- 4
 m <- 10
@@ -37,7 +41,8 @@ mat <- sobolSequence.points(dimR=s, dimF2=m, count=c)
 mat[1,]
 ```
 
-Get digital shifted points. 
+デジタルシフトされた点集合を取得する。
+
 ```{r}
 s <- 4
 m <- 10
