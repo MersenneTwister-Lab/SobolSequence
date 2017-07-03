@@ -20,7 +20,6 @@
  * COPYING
  */
 #include "grayindex.h"
-#include "MersenneTwister64.h"
 #include <stdint.h>
 #include <cstring>
 #include <fstream>
@@ -31,6 +30,9 @@
 #include <cmath>
 #if defined(IN_RCPP)
 #include <Rcpp.h>
+#else
+// can't use 64bit in CRAN
+#include "MersenneTwister64.h"
 #endif
 // [[Rcpp::plugins(cpp11)]]
 
@@ -283,6 +285,7 @@ namespace DigitalNetNS {
             }
         }
 
+#if !defined(IN_RCPP)
         // Random Linear Scramble
         // Base を変えてしまう => いいのかも。
         void scramble() {
@@ -297,7 +300,7 @@ namespace DigitalNetNS {
                     LowTriMat[j] = (mt() << (N - j - 1)) | p2;
                 }
                 for (size_t k = 0; k < m; k++) {
-                    tmp = UINT64_C(0);
+                    tmp = 0;
                     for (size_t j = 0; j < N; j++) {
                         U bit = innerProduct(LowTriMat[j], getBase(k, i));
                         tmp ^= bit << (N - j - 1);
@@ -337,7 +340,7 @@ namespace DigitalNetNS {
                 }
             }
         }
-
+#endif
         void pointInitialize() {
 #if defined(DEBUG)
             using namespace std;
@@ -364,17 +367,17 @@ namespace DigitalNetNS {
             for (uint32_t i = 0; i < s; ++i) {
                 point_base[i] = 0;
             }
-            if (!shiftVector) {
-                if (digitalShift) {
-                    for (uint32_t i = 0; i < s; ++i) {
-                        shift[i] = mt();
-                    }
-                } else {
-                    for (uint32_t i = 0; i < s; ++i) {
-                        shift[i] = 0;
-                    }
+#if !defined(IN_RCPP)
+            if (digitalShift) {
+                for (uint32_t i = 0; i < s; ++i) {
+                    shift[i] = mt();
+                }
+            } else {
+                for (uint32_t i = 0; i < s; ++i) {
+                    shift[i] = 0;
                 }
             }
+#endif
             gray.clear();
             count = 0;
             count++;
@@ -389,7 +392,9 @@ namespace DigitalNetNS {
             using namespace std;
             cout << "in nextPoint" << endl;
 #endif
-            if (count == (UINT64_C(1) << m)) {
+            uint64_t count_max = 1;
+            count_max = count_max << m;
+            if (count == count_max) {
                 pointInitialize();
                 //return;
             }
@@ -406,7 +411,7 @@ namespace DigitalNetNS {
                 point_base[i] ^= getBase(bit, i);
             }
             convertPoint();
-            if (count == (UINT64_C(1) << m)) {
+            if (count == count_max) {
                 count = 0;
                 gray.clear();
             } else {
@@ -422,10 +427,12 @@ namespace DigitalNetNS {
             cout << "out nextPoint" << endl;
 #endif
         }
+#if !defined(IN_RCPP)
         //void showStatus(std::ostream& os);
         void setSeed(U seed) {
             mt.seed(seed);
         }
+#endif
         double getWAFOM() {
             return wafom;
         }
@@ -459,7 +466,9 @@ namespace DigitalNetNS {
         double factor;
         double eps;
         GrayIndex gray;
+#if !defined(IN_RCPP)
         MersenneTwister64 mt;
+#endif
         U * base;
         U * point_base;
         U * shift;

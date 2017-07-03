@@ -11,7 +11,7 @@ using namespace DigitalNetNS;
 NumericMatrix rcppSobolPoints(std::string filename,
                               int dimR,
                               int dimF2,
-                              uint64_t count,
+                              int count,
                               NumericVector shiftVector)
 {
     digital_net_id id = SOBOL;
@@ -21,7 +21,11 @@ NumericMatrix rcppSobolPoints(std::string filename,
         Rcout << "shiftVector.length = " << shiftVector.length() << endl;
 #endif
         IntegerVector iv = as<IntegerVector>(shiftVector);
+#if defined(IN_CRAN)
+        uint64_t * shifts = new uint64_t[dimR];
+#else
         uint64_t shifts[dimR];
+#endif
         for (int i = 0; i < dimR; i++) {
 #if defined(RDEBUG)
             Rcout << "shiftVector[" << (2*i) << "] = "
@@ -40,12 +44,15 @@ NumericMatrix rcppSobolPoints(std::string filename,
         }
 #endif
         digitalNet.setDigitalShift(shifts);
+#if defined(IN_CRAN)
+        delete[] shifts;
+#endif
     }
     digitalNet.pointInitialize();
     //uint32_t cnt = 0;
     NumericMatrix mx(count, dimR);
     // assume that count <= 2^dimF2
-    for (size_t i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++) {
         checkUserInterrupt();
         for (int j = 0; j < dimR; j++) {
             mx(i, j) = digitalNet.getPoint(j);

@@ -296,9 +296,14 @@ namespace DigitalNetNS {
         uint32_t L = m;
         //uint32_t N = UINT32_C(1) << (m - 1);
         uint32_t col = 0;
+#if defined(IN_CRAN)
+        uint64_t * V = new uint64_t[L + 1];
+#else
         uint64_t V[L + 1];
+#endif
+        uint64_t one = 1;
         for (unsigned i=1;i<=L;i++) {
-            V[i] = UINT64_C(1) << (64 - i); // all m's = 1
+            V[i] = one << (64 - i); // all m's = 1
         }
 #if defined(DEBUG)
         cout << "col = " << dec << col << endl;
@@ -319,6 +324,9 @@ namespace DigitalNetNS {
                 cerr << "data format error" << endl;
 #endif
                 //throw runtime_error("data format error");
+#if defined(IN_CRAN)
+                delete[] V;
+#endif
                 return false;
             }
             col++;
@@ -357,6 +365,9 @@ namespace DigitalNetNS {
                 base[(i - 1) * s + col] = V[i];
             }
         }
+#if defined(IN_CRAN)
+        delete[] V;
+#endif
         for (uint32_t i = L - 1; i >= 1; i--) {
             for (uint32_t j = 0; j < s; j++) {
                 base[i * s + j] ^= base[(i - 1) * s + j];

@@ -108,13 +108,19 @@ namespace {
     template<typename U>
     int read_sobol_base(const string& path, uint32_t s, uint32_t m, U base[])
     {
-        ifstream ifs(path, ios::in | ios::binary);
+        //ifstream ifs(path, ios::in | ios::binary);
+        ifstream ifs;
+        ifs.open(path.c_str(), ios::in);
         if (!ifs) {
             errs << "can't open:" << path << endl;
             msgout(errs);
             return -1;
         }
+#if defined(IN_CRAN)
+        uint64_t *data = new uint64_t[s * m];
+#else
         uint64_t data[s * m];
+#endif
         bool r = get_sobol_base(ifs, s, m, data);
         if (!r) {
             return -1;
@@ -129,6 +135,9 @@ namespace {
                 base[i] = data[i];
             }
         }
+#if defined(IN_CRAN)
+        delete[] data;
+#endif
         return 0;
     }
 
@@ -185,7 +194,11 @@ namespace {
                               U base[],
                               int * tvalue, double * wafom)
     {
+#if defined(IN_CRAN)
+        uint64_t * data = new uint64_t[s * m];
+#else
         uint64_t data[s * m];
+#endif
         uint64_t tmp;
         uint32_t i = 0;
         uint32_t j = 0;
@@ -230,6 +243,9 @@ namespace {
                                         & UINT32_C(0xffffffff));
             }
         }
+#if defined(IN_CRAN)
+        delete[] data;
+#endif
         return 0;
     }
 

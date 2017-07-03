@@ -60,6 +60,9 @@ static inline int ones(uint32_t x) {
 static inline int ones(uint64_t x) {
 #if HAVE___BUILTIN_POPCOUNTLL
     return __builtin_popcountll(x);
+#elif defined(IN_CRAN)
+    return ones(static_cast<uint32_t>(x >> 32))
+        + ones(static_cast<uint32_t>(x & UINT32_C(0xffffffff)));
 #else
     x -= (x >> 1) & UINT64_C(0x5555555555555555);
     x = ((x >> 2) & UINT64_C(0x3333333333333333))
@@ -122,6 +125,7 @@ T innerProduct(T a, T b)
     return static_cast<T>(ones(a & b) & 1);
 }
 
+#if !defined(IN_RCPP)
 static inline uint32_t reverseBit(uint32_t x)
 {
     x = ((x & UINT32_C(0xaaaaaaaa)) >> 1)
@@ -149,7 +153,7 @@ static inline uint64_t reverseBit(uint64_t x)
         ((x & UINT64_C(0x0000ffff0000ffff)) << 16);
     return (x >> 32) | (x << 32);
 }
-
+#endif
 static inline int getBit(uint64_t x, uint32_t pos)
 {
     return (x >> pos) & 1;

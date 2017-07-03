@@ -6,14 +6,14 @@
 using namespace Rcpp;
 
 // rcppSobolPoints
-NumericMatrix rcppSobolPoints(std::string filename, int dimR, int dimF2, uint64_t count, NumericVector shiftVector);
+NumericMatrix rcppSobolPoints(std::string filename, int dimR, int dimF2, int count, NumericVector shiftVector);
 RcppExport SEXP SobolSequence_rcppSobolPoints(SEXP filenameSEXP, SEXP dimRSEXP, SEXP dimF2SEXP, SEXP countSEXP, SEXP shiftVectorSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::traits::input_parameter< std::string >::type filename(filenameSEXP);
     Rcpp::traits::input_parameter< int >::type dimR(dimRSEXP);
     Rcpp::traits::input_parameter< int >::type dimF2(dimF2SEXP);
-    Rcpp::traits::input_parameter< uint64_t >::type count(countSEXP);
+    Rcpp::traits::input_parameter< int >::type count(countSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type shiftVector(shiftVectorSEXP);
     rcpp_result_gen = Rcpp::wrap(rcppSobolPoints(filename, dimR, dimF2, count, shiftVector));
     return rcpp_result_gen;
