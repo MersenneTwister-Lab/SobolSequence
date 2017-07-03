@@ -16,7 +16,13 @@ Stephen Joe と Frances Y. Kuo による
 - [このページ](https://mersennetwister-lab.github.io/SobolSequence/)
 
 ##インストール
-以下のようにしてこのパッケージをRにインストールすることができる。
+まず、
+
+- Windows利用者は[Rtools](https://cran.r-project.org/bin/windows/Rtools/)を
+インストールしておく必要がある。
+- Mac 利用者はXcodeをインストールしておく必要があるかもしれない。
+
+その後、以下のようにしてこのパッケージをRにインストールすることができる。
 
 ```
 install.packages('devtools')
