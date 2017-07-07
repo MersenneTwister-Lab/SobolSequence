@@ -19,5 +19,6 @@ sobolSequence.points(dimR, dimF2 = 10, count, digitalShift = FALSE)
 matrix of points where every row contains dimR dimensional point.
 }
 \description{
-get points from SobolSequence
+This R version does not returns cordinate value zero,
+but returns value very near to zero, 2^-64.
 }

@@ -10,7 +10,7 @@ sobolSequence.dimF2MinMax(dimR)
 \item{dimR}{dimention.}
 }
 \value{
-supportd minimum and maximum F2 dimension number for specified digitalNet.
+supportd minimum and maximum F2 dimension number.
 }
 \description{
 get minimum and maximum F2 dimension number.
