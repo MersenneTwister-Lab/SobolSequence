@@ -3,10 +3,10 @@ R package: 2次元射影のよいSobol sequences
 
 Stephen Joe と Frances Y. Kuo による
 "Constructing Sobol sequences with better two-dimensional projections"
-を斎藤睦夫がRに移植したもの。
+をRに移植したもの。
 
-##注意
-いまのところ、このプロジェクトはまったく実験的なものです。
+##お知らせ
+このパッケージはCRANに登録されました。
 
 ##リンク
 

@@ -5,8 +5,8 @@ Mutsuo Saito ported
 "Constructing Sobol sequences with better two-dimensional projections"
 by Stephen Joe and Frances Y. Kuo to R.
 
-##Caution
-Currently, this project is very experimental.
+##Information
+SobolSequence is now available in CRAN.
 
 ##Link
 - [Japanese Version](index-ja.html)
