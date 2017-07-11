@@ -17,9 +17,8 @@ Author: Frances Kuo [aut],
         Shinsuke Mori [ctb],
         Mutsuo Saito [cre]
 Maintainer: Mutsuo Saito <sai10@hiroshima-u.ac.jp>
-Description: R implementation of S. Joe and F. Y. Kuo,
-        "Constructing Sobol sequences with better two-dimensional projections",
-        SIAM J. Sci. Comput. 30, 2635-2654 (2008).
+Description: R implementation of S. Joe and F. Y. Kuo(2008)
+        <DOI:10.1137/070709359>.
         The implementation is based on the data file new-joe-kuo-6.21201
         <http://web.maths.unsw.edu.au/~fkuo/sobol/>.
 License: BSD_3_clause + file LICENSE
