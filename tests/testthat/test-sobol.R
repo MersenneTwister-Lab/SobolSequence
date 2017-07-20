@@ -8,16 +8,14 @@ test_that("test sobolSequence dimMinMax", {
 })
 
 test_that("test sobolSequence dimF2MinMax", {
-  rs <- sobolSequence.dimF2MinMax(10)
-  expect_true(rs[1] <= 10)
-  expect_true(rs[2] >= 18)
+  rs <- sobolSequence.maxCount(10)
+  expect_true(rs >= 2^31)
 })
 
 test_that("test sobolSequence points", {
   s <- 4
-  m <- 10
-  n <- 2^m
-  matrix <- sobolSequence.points(dimR=s, dimF2=m, count=n)
+  n <- 1000
+  matrix <- sobolSequence.points(dim=s, count=n)
   expect_equal(nrow(matrix), n)
   expect_equal(ncol(matrix), s)
   expect_true(all(matrix < 1))
@@ -26,9 +24,8 @@ test_that("test sobolSequence points", {
 
 test_that("test sobolSequence points digitalShift", {
   s <- 4
-  m <- 11
-  n <- 2^m
-  matrix <- sobolSequence.points(dimR=s, dimF2=m, count=n, digitalShift=TRUE)
+  n <- 2000
+  matrix <- sobolSequence.points(dim=s, count=n, digitalShift=TRUE)
   expect_equal(nrow(matrix), n)
   expect_equal(ncol(matrix), s)
   expect_true(all(matrix < 1))

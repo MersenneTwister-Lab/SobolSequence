@@ -19,10 +19,8 @@
 ##'
 ##'@examples
 ##' srange <- sobolSequence.dimMinMax()
-##' mrange <- sobolSequence.dimF2MinMax(srange[1])
-##' points <- sobolSequence.points(dimR=srange[1], dimF2=mrange[1], count=10000)
-##' points <- sobolSequence.points(dimR=srange[1], dimF2=mrange[1], count=10000,
-##'                                digitalShift=TRUE)
+##' points <- sobolSequence.points(dim=srange[1], count=10000)
+##' points <- sobolSequence.points(dim=srange[1], count=10000, digitalShift=TRUE)
 ##'@section Reference:
 ##' S. Joe and F. Y. Kuo,
 ##' "Constructing Sobol sequences with better two-dimensional projections",
@@ -46,46 +44,38 @@ sobolSequence.dimMinMax <- function() {
 
 ##' get minimum and maximum F2 dimension number.
 ##'
-##'@param dimR dimention.
-##'@return supportd minimum and maximum F2 dimension number.
+##'@param dim dimention.
+##'@return supportd maximum number of points.
 ##'@export
-sobolSequence.dimF2MinMax <- function(dimR) {
-    return(c(10, 31))
+sobolSequence.maxCount <- function(dim) {
+    return(2^31)
 }
 
 ##' get points from SobolSequence
 ##'
 ##' This R version does not returns cordinate value zero,
 ##' but returns value very near to zero, 2^-64.
-##'@param dimR dimention.
-##'@param dimF2 F2-dimention of each element.
+##'@param dim dimention.
 ##'@param count number of points.
 ##'@param digitalShift use digital shift or not.
 ##'@return matrix of points where every row contains dimR dimensional point.
 ##'@export
-sobolSequence.points <- function(dimR,
-                              dimF2 = 10,
-                              count,
-                              digitalShift = FALSE) {
+sobolSequence.points <- function(dim,
+                                 count,
+                                 digitalShift = FALSE) {
   smax = sobolSequence.dimMinMax()
-  if (dimR < smax[1] || dimR > smax[2]) {
-    stop(sprintf("dimR should be an integer %d <= dimR <= %d", smax[1], smax[2]))
+  if (dim < smax[1] || dim > smax[2]) {
+    stop(sprintf("dim should be an integer %d <= dim <= %d", smax[1], smax[2]))
   }
-  if (missing(dimF2)) {
-    dimF2 = max(dimF2, ceiling(log2(count)))
-  }
-  mmax = sobolSequence.dimF2MinMax(dimR)
-  if (dimF2 < mmax[1] || dimF2 > mmax[2]) {
-    stop(sprintf("dimF2 should be an integer %d <= dimF2 <= %d", mmax[1], mmax[2]))
-  }
+  dimF2 = max(10, ceiling(log2(count)))
   fname = system.file("extdata",
                        "new-joe-kuo-6.21201",
                        package = "SobolSequence")
   if (digitalShift) {
-    sv <- runif(2*dimR, min=-2^31, max=2^31-1)
+    sv <- runif(2*dim, min=-2^31, max=2^31-1)
   } else {
     sv <- numeric(1)
   }
 #  print(sv)
-  return(rcppSobolPoints(fname, dimR, dimF2, count, sv))
+  return(rcppSobolPoints(fname, dim, dimF2, count, sv))
 }

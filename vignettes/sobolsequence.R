@@ -3,19 +3,17 @@ library(SobolSequence)
 sobolSequence.dimMinMax()
 
 ## ------------------------------------------------------------------------
-sobolSequence.dimF2MinMax(10)
+sobolSequence.maxCount(10)
 
 ## ------------------------------------------------------------------------
 s <- 4
-m <- 10
-c <- 2^m
-mat <- sobolSequence.points(dimR=s, dimF2=m, count=c)
+c <- 1000
+mat <- sobolSequence.points(dim=s, count=c)
 mat[1,]
 
 ## ------------------------------------------------------------------------
 s <- 4
-m <- 10
-c <- 2^m
-mat <- sobolSequence.points(dimR=s, dimF2=m, count=c, digitalShift=TRUE)
+c <- 1000
+mat <- sobolSequence.points(dim=s, count=c, digitalShift=TRUE)
 mat[1,]
 

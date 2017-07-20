@@ -35,8 +35,6 @@ SIAM J. Sci. Comput. 30, 2635-2654 (2008).
 
 \examples{
 srange <- sobolSequence.dimMinMax()
-mrange <- sobolSequence.dimF2MinMax(srange[1])
-points <- sobolSequence.points(dimR=srange[1], dimF2=mrange[1], count=10000)
-points <- sobolSequence.points(dimR=srange[1], dimF2=mrange[1], count=10000,
-                               digitalShift=TRUE)
+points <- sobolSequence.points(dim=srange[1], count=10000)
+points <- sobolSequence.points(dim=srange[1], count=10000, digitalShift=TRUE)
 }

@@ -25,23 +25,21 @@ sobolSequence.dimMinMax()
 
 Get avairable F2 dimension number of Sobol Sequence.
 ```{r}
-sobolSequence.dimF2MinMax(10)
+sobolSequence.maxCount(10)
 ```
 
 And get points. Each row of returned matrix contains an s-dimensional point.
 ```{r}
 s <- 4
-m <- 10
-c <- 2^m
-mat <- sobolSequence.points(dimR=s, dimF2=m, count=c)
+c <- 1000
+mat <- sobolSequence.points(dim=s, count=c)
 mat[1,]
 ```
 
 Get digital shifted points. 
 ```{r}
 s <- 4
-m <- 10
-c <- 2^m
-mat <- sobolSequence.points(dimR=s, dimF2=m, count=c, digitalShift=TRUE)
+c <- 1000
+mat <- sobolSequence.points(dim=s, count=c, digitalShift=TRUE)
 mat[1,]
 ```

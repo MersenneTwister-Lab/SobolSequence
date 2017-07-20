@@ -1,8 +1,8 @@
 Package: SobolSequence
 Type: Package
 Title: Sobol Sequences with Better Two-Dimensional Projections
-Version: 1.0
-Date: 2017-07-03
+Version: 1.0.1
+Date: 2017-07-20
 Authors@R: c(person("Frances", "Kuo", role = "aut"),
              person("Stephen", "Joe", role = "aut"),
              person("Makoto", "Matsumoto", role = "ctb",

@@ -4,12 +4,10 @@
 \alias{sobolSequence.points}
 \title{get points from SobolSequence}
 \usage{
-sobolSequence.points(dimR, dimF2 = 10, count, digitalShift = FALSE)
+sobolSequence.points(dim, count, digitalShift = FALSE)
 }
 \arguments{
-\item{dimR}{dimention.}
-
-\item{dimF2}{F2-dimention of each element.}
+\item{dim}{dimention.}
 
 \item{count}{number of points.}
 
