@@ -6,7 +6,7 @@ Mutsuo Saito ported
 by Stephen Joe and Frances Y. Kuo to R.
 
 ##Information
-SobolSequence is now available in CRAN.
+SobolSequence 1.0 is now available in CRAN.
 
 ##Link
 - [Japanese Version](index-ja.html)
@@ -15,20 +15,33 @@ SobolSequence is now available in CRAN.
 - [This Page](https://mersennetwister-lab.github.io/SobolSequence/)
 
 ##Install
-You can install the packeage in R like this:
+You can install the release packeage from CRAN.
+
+### Install Develop version
+- Windows Users need [Rtools](https://cran.r-project.org/bin/windows/Rtools/).
+- Mac users need Xcode.
+
+And then,
 
 ```
 install.packages('devtools')
 library('devtools')
-install_github("MersenneTwister-Lab/SobolSequence")
+install_github("MersenneTwister-Lab/SobolSequence", ref='develop')
 ```
 
-##Recovery
-If fail, try old good style, download and install.
+##Download
+### Release Version:
 
 - Source Package: [SobolSequence_1.0.tar.gz](SobolSequence_1.0.tar.gz)
 - OS X Binary Package: [SobolSequence_1.0.tgz](SobolSequence_1.0.tgz)
 - Windows Binary Package: [SobolSequence_1.0.zip](SobolSequence_1.0.zip)
+
+### Develop Version:
+
+- Source Package: [SobolSequence_1.0.1.tar.gz](SobolSequence_1.0.1.tar.gz)
+- OS X Binary Package: [SobolSequence_1.0.1.tgz](SobolSequence_1.0.1.tgz)
+- Windows Binary Package: [SobolSequence_1.0.1.zip](SobolSequence_1.0.1.zip)
+- [vignettes](v1_0_1/sobolsequence.html)
 
 ##Reference
 - S. Joe and F. Y. Kuo,

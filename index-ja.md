@@ -6,7 +6,7 @@ Stephen Joe と Frances Y. Kuo による
 をRに移植したもの。
 
 ##お知らせ
-このパッケージはCRANに登録されました。
+このSobolSequence 1.0 パッケージはCRANに登録されました。
 
 ##リンク
 
@@ -16,6 +16,9 @@ Stephen Joe と Frances Y. Kuo による
 - [このページ](https://mersennetwister-lab.github.io/SobolSequence/)
 
 ##インストール
+リリース版はCRANからインストールできます。
+
+###開発版のインストール
 まず、
 
 - Windows利用者は[Rtools](https://cran.r-project.org/bin/windows/Rtools/)を
@@ -27,15 +30,22 @@ Stephen Joe と Frances Y. Kuo による
 ```
 install.packages('devtools')
 library('devtools')
-install_github('MersenneTwister-Lab/SobolSequence')
+install_github('MersenneTwister-Lab/SobolSequence', ref='develop')
 ```
 
-##やり直し
-上記の方法でうまくいかないときは、ダウンロードしてインストールする方法を試してください。
+##ダウンロード
+###リリース版
 
 - Source Package: [SobolSequence_1.0.tar.gz](SobolSequence_1.0.tar.gz)
 - OS X Binary Package: [SobolSequence_1.0.tgz](SobolSequence_1.0.tgz)
 - Windows Binary Package: [SobolSequence_1.0.zip](SobolSequence_1.0.zip)
+
+###開発版
+
+- Source Package: [SobolSequence_1.0.1.tar.gz](SobolSequence_1.0.1.tar.gz)
+- OS X Binary Package: [SobolSequence_1.0.1.tgz](SobolSequence_1.0.1.tgz)
+- Windows Binary Package: [SobolSequence_1.0.1.zip](SobolSequence_1.0.1.zip)
+- [vignettes](v1_0_1/sobolsequence-ja.html)
 
 ##参照
 - S. Joe and F. Y. Kuo,
