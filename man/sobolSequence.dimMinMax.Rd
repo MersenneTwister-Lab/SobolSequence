@@ -7,7 +7,7 @@
 sobolSequence.dimMinMax()
 }
 \value{
-supportd minimum and maximum dimension number.
+supported minimum and maximum dimension number.
 }
 \description{
 get minimum and maximum dimension number of Sobol Sequence

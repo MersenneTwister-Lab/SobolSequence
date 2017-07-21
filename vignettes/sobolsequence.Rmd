@@ -15,9 +15,9 @@ S. Joe and F. Y. Kuo,
 SIAM J. Sci. Comput. 30, 2635-2654 (2008).
 The implementation is based on the data file new-joe-kuo-6.21201
 <http://web.maths.unsw.edu.au/~fkuo/sobol/>.
-        
 
-Get avairable dimension number of Sobol Sequence.
+
+Get available dimension number of Sobol Sequence.
 ```{r}
 library(SobolSequence)
 sobolSequence.dimMinMax()
@@ -36,7 +36,7 @@ mat <- sobolSequence.points(dim=s, count=c)
 mat[1,]
 ```
 
-Get digital shifted points. 
+Get digital shifted points.
 ```{r}
 s <- 4
 c <- 1000

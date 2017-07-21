@@ -15,13 +15,13 @@ The implementation is based on the data file new-joe-kuo-6.21201
 <http://web.maths.unsw.edu.au/~fkuo/sobol/>.
 
 Porting to R by Mutsuo Saito.
-The R version does not returns cordinate value zero,
+The R version does not returns coordinate value zero,
 but returns value very near to zero, 2^-64.
 }
 \section{Acknowledgments}{
 
 I, Mutsuo Saito, wish to thank Frances Kuo and Stephen Joe for their research,
-and agreement to use thier source code.
+and agreement to use their source code.
 
 The development of this R code is partially supported by JST CREST.
 }

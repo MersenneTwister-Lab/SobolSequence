@@ -852,7 +852,7 @@ namespace DigitalNetNS {
     {
         return read_digital_net_data(is, n, s, m, base, tvalue, wafom);
     }
-
+#if !defined(IN_RCPP)
     int readDigitalNetData(std::istream& is, int n,
                            uint32_t s, uint32_t m,
                            uint32_t base[],
@@ -860,7 +860,7 @@ namespace DigitalNetNS {
     {
         return read_digital_net_data(is, n, s, m, base, tvalue, wafom);
     }
-
+#endif
 /**
  * Constructor from reserved data
  *
@@ -878,25 +878,18 @@ namespace DigitalNetNS {
     {
         return read_sobol_base(filename, s, m, base);
     }
-
+#if !defined(IN_RCPP)
     int readSobolBase(string& filename, uint32_t s, uint32_t m,
                       uint32_t base[])
     {
         return read_sobol_base(filename, s, m, base);
     }
+#endif // ! IN_RCPP
 #endif
 #if defined(USE_DF)
     int readDigitalNetData(DataFrame df, digital_net_id id,
                            uint32_t s, uint32_t m,
                            uint64_t base[],
-                           int * tvalue, double * wafom)
-    {
-        return read_digital_net_data(df, id, s, m, base, tvalue, wafom);
-    }
-
-    int readDigitalNetData(DataFrame df, digital_net_id id,
-                           uint32_t s, uint32_t m,
-                           uint32_t base[],
                            int * tvalue, double * wafom)
     {
         return read_digital_net_data(df, id, s, m, base, tvalue, wafom);

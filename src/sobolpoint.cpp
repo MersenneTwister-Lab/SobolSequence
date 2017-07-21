@@ -53,6 +53,13 @@
  * http://web.maths.unsw.edu.au/~fkuo/sobol/sobol.cc
  *
  * And modified much by Mutsuo Saito <saito@manieth.com> for R package.
+ *
+ * Saito send an e-mail to the authors for getting week license condition
+ * for CRAN, and then,
+ * Frances Y. Kuo and Stephen Joe kindly said that:
+ * "You may incorporate this source code into your own program
+ * provided that you acknowledge the copyright owner in your program
+ * and publication."
  */
 
 #include <inttypes.h>
@@ -92,90 +99,12 @@ namespace {
 #if defined(USE_FILE)
     bool read_data(istream& is, uint32_t data[]);
 #endif
-#if defined(USE_DF)
-    bool read_data(Rcpp::DataFrame df, int count, uint32_t data[]);
-#endif
 #if defined(USE_SQL)
     bool read_data(sqlite3_stmt* select_sql, uint32_t data[]);
 #endif
 }
 
 namespace DigitalNetNS {
-#if defined(USE_DF)
-    bool read_sobol_base(DataFrame df,
-                         uint32_t s, uint32_t m,  uint64_t base[])
-    {
-        uint32_t D = s + 1;
-        uint32_t L = m;
-        //uint32_t N = UINT32_C(1) << (m - 1);
-        uint32_t col = 0;
-        uint64_t V[L + 1];
-        for (unsigned i=1;i<=L;i++) {
-            V[i] = UINT64_C(1) << (64 - i); // all m's = 1
-        }
-#if defined(DEBUG)
-        cout << "col = " << dec << col << endl;
-        for (uint32_t i = 1; i <= L; i++) {
-            cout << "V[" << dec << i << "] = " << hex << V[i] << endl;
-        }
-#endif
-        for (uint32_t i = 1; i <= L; i++) {
-            base[(i - 1) * s + col] = V[i];
-        }
-        uint32_t data[max_data];
-        for (uint32_t c = 1; c < D - 1; c++) {
-            bool success = read_data(df, c - 1, data);
-            if (! success) {
-                warning("data format error");
-                //throw runtime_error("data format error");
-                return false;
-            }
-            col++;
-            //uint32_t d_sobol = data[0];
-            uint32_t s_sobol = data[0];
-            uint32_t a_sobol = data[1];
-            uint32_t *m_sobol = &data[1]; // index from 1
-#if defined(DEBUG)
-            //cout << "d = " << dec << d_sobol << endl;
-            cout << "s = " << dec << s_sobol << endl;
-            cout << "a = " << dec << a_sobol << endl;
-            cout << "L = " << dec << L << endl;
-#endif
-            if (L <= s_sobol) {
-                for (unsigned i=1;i<=L;i++) {
-                    V[i] = static_cast<uint64_t>(m_sobol[i]) << (64 - i);
-                }
-            } else {
-                for (unsigned i = 1; i <= s_sobol; i++) {
-                    V[i] = static_cast<uint64_t>(m_sobol[i]) << (64 - i);
-                }
-                for (unsigned i = s_sobol + 1; i <= L; i++) {
-                    V[i] = V[i - s_sobol] ^ (V[i - s_sobol] >> s_sobol);
-                    // s
-                    for (unsigned k=1; k <= s_sobol-1; k++) {
-                        V[i] ^= (((a_sobol >> (s_sobol-1-k)) & 1) * V[i-k]);
-                    }
-                }
-            }
-#if defined(DEBUG)
-            cout << "col = " << dec << col << endl;
-            for (uint32_t i = 1; i <= L; i++) {
-                cout << "V[" << dec << i << "] = " << hex << V[i] << endl;
-            }
-#endif
-            for (uint32_t i = 1; i <= L; i++) {
-                base[(i - 1) * s + col] = V[i];
-            }
-        }
-        for (uint32_t i = L - 1; i >= 1; i--) {
-            for (uint32_t j = 0; j < s; j++) {
-                base[i * s + j] ^= base[(i - 1) * s + j];
-            }
-        }
-        return true;
-    }
-#endif
-
 #if defined(USE_SQL)
     bool select_sobol_base(const std::string& path,
                            uint32_t s, uint32_t m,  uint64_t base[])
@@ -381,27 +310,6 @@ namespace DigitalNetNS {
 }
 
 namespace {
-#if defined(USE_DF)
-    bool read_data(DataFrame df, int count, uint32_t data[])
-    {
-        NumericVector vs = df["s"];
-        NumericVector va = df["a"];
-        StringVector vmi = df["mi"];
-        if (count >= vs.length()) {
-            return false;
-        }
-        data[0] = vs[count];
-        data[1] = va[count];
-        //string tmp = vmi[count];
-        stringstream ss;
-        ss << vmi[count];
-        for (int i = 2; ss.good(); i++) {
-            ss >> data[i];
-        }
-        return true;
-    }
-#endif
-
 #if defined(USE_SQL)
     bool read_data(sqlite3_stmt* select_sql, uint32_t data[])
     {

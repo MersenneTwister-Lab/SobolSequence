@@ -8,12 +8,12 @@
 ##' <http://web.maths.unsw.edu.au/~fkuo/sobol/>.
 ##'
 ##' Porting to R by Mutsuo Saito.
-##' The R version does not returns cordinate value zero,
+##' The R version does not returns coordinate value zero,
 ##' but returns value very near to zero, 2^-64.
 ##'
 ##'@section Acknowledgments:
 ##' I, Mutsuo Saito, wish to thank Frances Kuo and Stephen Joe for their research,
-##' and agreement to use thier source code.
+##' and agreement to use their source code.
 ##'
 ##' The development of this R code is partially supported by JST CREST.
 ##'
@@ -36,7 +36,7 @@ NULL
 
 ##' get minimum and maximum dimension number of Sobol Sequence
 ##'
-##'@return supportd minimum and maximum dimension number.
+##'@return supported minimum and maximum dimension number.
 ##'@export
 sobolSequence.dimMinMax <- function() {
     return(c(2, 21201))
@@ -44,8 +44,8 @@ sobolSequence.dimMinMax <- function() {
 
 ##' get minimum and maximum F2 dimension number.
 ##'
-##'@param dim dimention.
-##'@return supportd maximum number of points.
+##'@param dim dimension.
+##'@return supported maximum number of points.
 ##'@export
 sobolSequence.maxCount <- function(dim) {
     return(2^31)
@@ -53,9 +53,9 @@ sobolSequence.maxCount <- function(dim) {
 
 ##' get points from SobolSequence
 ##'
-##' This R version does not returns cordinate value zero,
+##' This R version does not returns coordinate value zero,
 ##' but returns value very near to zero, 2^-64.
-##'@param dim dimention.
+##'@param dim dimension.
 ##'@param count number of points.
 ##'@param digitalShift use digital shift or not.
 ##'@return matrix of points where every row contains dimR dimensional point.

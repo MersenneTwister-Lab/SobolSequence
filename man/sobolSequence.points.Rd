@@ -7,7 +7,7 @@
 sobolSequence.points(dim, count, digitalShift = FALSE)
 }
 \arguments{
-\item{dim}{dimention.}
+\item{dim}{dimension.}
 
 \item{count}{number of points.}
 
@@ -17,6 +17,6 @@ sobolSequence.points(dim, count, digitalShift = FALSE)
 matrix of points where every row contains dimR dimensional point.
 }
 \description{
-This R version does not returns cordinate value zero,
+This R version does not returns coordinate value zero,
 but returns value very near to zero, 2^-64.
 }
