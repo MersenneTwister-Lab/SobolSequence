@@ -23,7 +23,7 @@ library(SobolSequence)
 sobolSequence.dimMinMax()
 ```
 
-Get avairable F2 dimension number of Sobol Sequence.
+Get maximun number of points..
 ```{r}
 sobolSequence.maxCount(10)
 ```

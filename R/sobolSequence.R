@@ -42,7 +42,7 @@ sobolSequence.dimMinMax <- function() {
     return(c(2, 21201))
 }
 
-##' get minimum and maximum F2 dimension number.
+##' get maximum number of points.
 ##'
 ##'@param dim dimension.
 ##'@return supported maximum number of points.

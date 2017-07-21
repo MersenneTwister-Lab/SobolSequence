@@ -2,7 +2,7 @@
 % Please edit documentation in R/sobolSequence.R
 \name{sobolSequence.maxCount}
 \alias{sobolSequence.maxCount}
-\title{get minimum and maximum F2 dimension number.}
+\title{get maximum number of points.}
 \usage{
 sobolSequence.maxCount(dim)
 }
@@ -13,5 +13,5 @@ sobolSequence.maxCount(dim)
 supported maximum number of points.
 }
 \description{
-get minimum and maximum F2 dimension number.
+get maximum number of points.
 }
